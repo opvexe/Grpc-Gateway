@@ -1,0 +1,28 @@
+//版本号
+syntax = "proto3";
+
+//包名
+package go.grpc.gateway.user;
+
+//引入包
+import "google/api/annotations.proto";
+
+
+service GetUserInfo{
+    rpc GrpcGetUserInfo(Request) returns (Response){
+        option (google.api.http) = {
+			post: "/user"
+            body: "*"
+		};
+    }
+}
+
+// 请求参数
+message Request{
+    string uid = 1;
+}
+
+// 返回参数
+message Response{
+    string name = 2;
+}
